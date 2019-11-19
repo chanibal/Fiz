@@ -425,6 +425,9 @@ static void clear_argv(int argc, char **argv) {
 }
 
 Fiz_Code fiz_exec(Fiz *F, const char *str) {
+    /** Abort the parser if requested, but cancel that if this is the first call */
+    if(F->callframe->parent == NULL)
+        F->abort = 0;
     if(F->abort) {
         fiz_set_return(F, "Interpreter aborted");
         return FIZ_ERROR;

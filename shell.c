@@ -63,6 +63,7 @@ int main(int argc, char *argv[]) {
         char buffer[256];
         printf("Interactive mode; press Ctrl-D to exit\n%s", PROMPT);
         while(fgets(buffer, sizeof buffer, stdin)) {
+            sigint_called = 0;
             c = fiz_exec(F, buffer);
             if(c == FIZ_OK) {
                 printf("ok: %s\n", fiz_get_return(F));

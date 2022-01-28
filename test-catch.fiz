@@ -1,0 +1,9 @@
+proc failing {} {
+	expr 3 + dupa
+	assert { expr 2 + dupa }
+}
+
+failing
+
+
+while { expr 1 } { delay 1000; puts "."; }
